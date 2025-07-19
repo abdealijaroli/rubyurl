@@ -1,0 +1,11 @@
+<h1>Minimal URL Shortener</h1>
+
+<%= form_with model: @link, url: "/shorten", local: true do |f| %>
+  <%= f.label :original, "Paste long URL:" %><br>
+  <%= f.text_field :original, placeholder: "https://example.com", size: 50 %><br><br>
+  <%= f.submit "Shorten" %>
+<% end %>
+
+<% if @link&.short %>
+  <p>Short URL: <a href="/<%= @link.short %>"><%= request.base_url %>/<%= @link.short %></a></p>
+<% end %>
